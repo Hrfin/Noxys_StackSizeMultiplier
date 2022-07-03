@@ -23,6 +23,29 @@ data:extend({
 		default_value = false,
 		order = "b",
 	},
+	{
+		type = "bool-setting",
+		name = "Noxys_StackSizeMultiplier-ignoreonestacks",
+		setting_type = "startup",
+		default_value = false,
+		order = "c",
+	},
+	{
+		type = "bool-setting",
+		name = "Noxys_StackSizeMultiplier-tweakammosize",
+		setting_type = "startup",
+		default_value = false,
+		order = "d",
+	},
+		{
+		type = "double-setting",
+		name = "Noxys_StackSizeMultiplier-ammomultiplier",
+		setting_type = "startup",
+		minimum_value = 0.00001,
+		default_value = 10,
+		maximum_value = 2147483647,
+		order = "e",
+	},
 	-- Global
 
 	-- Per user

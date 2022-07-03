@@ -1,4 +1,5 @@
 local itemStackSizeMultiplier = settings.startup["Noxys_StackSizeMultiplier-multiplier"].value
+local ammoStackSizeMultiplier = settings.startup["Noxys_StackSizeMultiplier-ammomultiplier"].value
 local max, min = math.max, math.min
 
 local ignore_by_type = {
@@ -17,6 +18,9 @@ local ignora_by_name = {
 }
 
 local function is_stackable(item)
+	if settings.startup["Noxys_StackSizeMultiplier-ignoreonestacks"].value then
+		if item.stack_size and item.stack_size == 1 then return false end
+	end
 	if not item.flags then return true end
 	if type(item.flags) ~= "table" then return true end
 	for _,v in pairs(item.flags) do
@@ -45,4 +49,9 @@ if settings.startup["Noxys_StackSizeMultiplier-tweaklogibots"].value then
 	for _,v in pairs(data.raw["logistic-robot"]) do
 		v.max_payload_size = max(1, min(2147483647, v.max_payload_size * itemStackSizeMultiplier))
 	end
+end
+
+if settings.startup["Noxys_StackSizeMultiplier-tweakammosize"].value then
+	for _, v in pairs(data.raw.ammo) do
+		v.magazine_size = max(1, min(2147483647, v.magazine_size * ammoStackSizeMultiplier)
 end
