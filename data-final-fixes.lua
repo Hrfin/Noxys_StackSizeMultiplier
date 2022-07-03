@@ -53,5 +53,8 @@ end
 
 if settings.startup["Noxys_StackSizeMultiplier-tweakammosize"].value then
 	for _, v in pairs(data.raw.ammo) do
-		v.magazine_size = max(1, min(2147483647, v.magazine_size * ammoStackSizeMultiplier)
+		if v.magazine_size then
+			v.magazine_size = max(1, min(2147483647, v.magazine_size * ammoStackSizeMultiplier))
+		end
+	end
 end
